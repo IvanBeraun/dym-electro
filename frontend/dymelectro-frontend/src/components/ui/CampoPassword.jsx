@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import './CampoPassword.css';
 
-/** Campo de contraseña con icono para mostrar/ocultar el texto escrito. */
 export default function CampoPassword({
   id,
   label,

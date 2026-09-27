@@ -19,7 +19,6 @@ public class CategoriaController {
         this.categoriaService = categoriaService;
     }
 
-    /** Lectura publica: tambien se usa para poblar filtros del catalogo publico. */
     @GetMapping
     public ResponseEntity<List<CategoriaDTO>> listar() {
         return ResponseEntity.ok(categoriaService.listar());

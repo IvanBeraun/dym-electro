@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorResponse> handleBadCredentials(BadCredentialsException ex, HttpServletRequest req) {
-        return build(HttpStatus.UNAUTHORIZED, "Credenciales invalidas", req);
+        return build(HttpStatus.UNAUTHORIZED, "Credenciales inválidas", req);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> handleDataIntegrity(DataIntegrityViolationException ex, HttpServletRequest req) {
-        return build(HttpStatus.CONFLICT, "El dato ya existe o viola una restriccion de la base de datos", req);
+        return build(HttpStatus.CONFLICT, "El dato ya existe o viola una restricción de la base de datos", req);
     }
 
     @ExceptionHandler(org.springframework.dao.EmptyResultDataAccessException.class)
@@ -55,8 +55,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(Exception ex, HttpServletRequest req) {
-        // Los SIGNAL SQLSTATE '45000' de MySQL suelen llegar envueltos aqui
-        // (UncategorizedSQLException); se extrae el mensaje real del trigger/SP.
+        // Los SIGNAL SQLSTATE '45000' de MySQL suelen llegar envueltos aquí
+        // Con el UncategorizedSQLException se extrae el mensaje real del trigger o SP.
         String message = ex.getMessage() != null ? ex.getMessage() : "Error interno";
         if (message.contains("SQLState")) {
             int idx = message.indexOf("Stock insuficiente");

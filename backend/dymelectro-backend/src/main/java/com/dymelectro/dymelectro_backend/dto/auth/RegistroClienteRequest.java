@@ -10,7 +10,7 @@ public record RegistroClienteRequest(
         @NotBlank String nombres,
         @NotBlank String apellidos,
         @NotBlank @Email String email,
-        @NotBlank @Size(min = 8, message = "La contrasena debe tener al menos 8 caracteres") String password,
+        @NotBlank @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres") String password,
         String telefono,
         String direccion
 ) {}

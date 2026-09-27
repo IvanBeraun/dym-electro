@@ -22,7 +22,7 @@ public record ComprobanteCabeceraDTO(
         String tarjetaMarca,
         String tarjetaUltimos4
 ) {
-    /** Constructor de compatibilidad para sp_listar_ventas, que no devuelve datos de tarjeta. */
+    /** Constructor de compatibilidad para sp_listar_ventas, esto no devuelve datos de tarjeta. */
     public ComprobanteCabeceraDTO(Integer idVenta, String tipoComprobante, String serieComprobante,
                                   Integer numeroComprobante, LocalDateTime fechaVenta, BigDecimal subtotal, BigDecimal igv,
                                   BigDecimal total, String estadoVenta, String nombresCliente, String apellidosCliente,

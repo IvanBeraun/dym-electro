@@ -33,7 +33,6 @@ export default function Registro() {
     setCargando(true);
     try {
       await registrarCliente(form);
-      // Tras registrarse, se inicia sesion automáticamente con las mismas credenciales.
       await ingresarComoCliente(form.email, form.password);
       navigate('/');
     } catch (err) {

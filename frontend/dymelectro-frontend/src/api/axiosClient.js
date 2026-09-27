@@ -16,7 +16,6 @@ axiosClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token vencido o invalido: forzar re-login limpiando la sesion.
       localStorage.removeItem('dym_token');
       localStorage.removeItem('dym_sesion');
       if (!window.location.pathname.startsWith('/login')) {

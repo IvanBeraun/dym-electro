@@ -27,17 +27,17 @@ import NoAutorizado from './pages/NoAutorizado';
 export default function App() {
   return (
     <Routes>
-      {/* ---- Login / registro (sin layout) ---- */}
+      {/* Login / registro (sin layout) */}
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Registro />} />
       <Route path="/no-autorizado" element={<NoAutorizado />} />
 
-      {/* ---- Tienda: catálogo público + zona de cliente autenticado ---- */}
+      {/* Tienda: catálogo público + zona de cliente autenticado */}
       <Route element={<ClienteLayout />}>
         <Route path="/" element={<Catalogo />} />
         <Route path="/productos/:idProducto" element={<ProductoDetalle />} />
 
-        {/* El comprobante lo puede ver cualquier sesion valida (cliente dueño o personal interno) */}
+        {/* El comprobante lo puede ver cualquier sesión valida (cliente dueño o personal interno) */}
         <Route element={<RutaProtegida />}>
           <Route path="/comprobante/:idVenta" element={<Comprobante />} />
         </Route>
@@ -51,7 +51,7 @@ export default function App() {
         </Route>
       </Route>
 
-      {/* ---- Panel interno: menu segun rol (Administrador / Vendedor / Almacenero) ---- */}
+      {/* Menú segun el rol */}
       <Route element={<RutaProtegida tipoRequerido="USUARIO" />}>
         <Route element={<AdminLayout />}>
           <Route path="/panel" element={<Dashboard />} />

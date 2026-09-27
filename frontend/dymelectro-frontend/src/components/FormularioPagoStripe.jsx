@@ -10,13 +10,13 @@ export default function FormularioPagoStripe({ onExito }) {
 
   async function manejarSubmit(e) {
     e.preventDefault();
-    if (!stripe || !elements) return; // Stripe.js todavia no termino de cargar
+    if (!stripe || !elements) return; // Stripe.js todavia no terminó de cargar
 
     setEnviando(true);
     setError('');
 
-    // redirect: 'if_required' evita el redirect de pagina completa salvo que
-    // el metodo de pago realmente lo necesite (ej. 3D Secure).
+    // redirect: 'if_required' evita el redirect de página completa a no ser que
+    // el método de pago realmente lo necesite
     const { error: errorConfirmacion, paymentIntent } = await stripe.confirmPayment({
       elements,
       redirect: 'if_required',

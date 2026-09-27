@@ -19,7 +19,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // habilita @PreAuthorize en los controllers
+@EnableMethodSecurity
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -40,13 +40,11 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                // publico: login, registro de clientes, y navegacion del catalogo
                 .requestMatchers("/api/auth/**").permitAll()
                     .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/catalogo/**").permitAll()
                     .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/categorias/**").permitAll()
                     .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/marcas/**").permitAll()
                     .requestMatchers(org.springframework.http.HttpMethod.GET, "/img_productos/**").permitAll()
-                // el resto exige un JWT valido; el detalle de roles se afina con @PreAuthorize
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
@@ -57,7 +55,6 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        // TODO: reemplazar por el/los dominio(s) reales del frontend en produccion
         config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));

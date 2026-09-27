@@ -22,14 +22,14 @@ public class PagoController {
         this.pagoService = pagoService;
     }
 
-    /** Paso 1 del checkout: crea el PaymentIntent en Stripe y devuelve el client_secret. */
+    /** Acá se crea el PaymentIntent en Stripe y devuelve el client_secret. */
     @PostMapping("/stripe/intent")
     public ResponseEntity<IntentoPagoResponse> crearIntento(@Valid @RequestBody CrearIntentoPagoRequest request,
                                                             @AuthenticationPrincipal AuthPrincipal solicitante) {
         return ResponseEntity.ok(pagoService.crearIntentoPago(request.idVenta(), solicitante));
     }
 
-    /** Paso 2: una vez que Stripe.js confirma el pago en el navegador, se registra el resultado. */
+    /** Cuando ya Stripe.js confirma el pago en el navegador, se registra el resultado. */
     @PostMapping("/stripe")
     public ResponseEntity<Void> registrarPago(@Valid @RequestBody PagoStripeRequest request) {
         pagoService.registrarPago(request);

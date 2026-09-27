@@ -5,7 +5,6 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/** Inicializa el SDK de Stripe con la llave secreta al arrancar la app. */
 @Component
 public class StripeConfig {
 

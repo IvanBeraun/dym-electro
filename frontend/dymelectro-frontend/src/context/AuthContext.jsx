@@ -16,7 +16,6 @@ export function AuthProvider({ children }) {
   const [sesion, setSesion] = useState(leerSesionGuardada);
 
   const guardarSesion = useCallback((data) => {
-    // data: { token, tipoCuenta, id, nombres, apellidos, rol }
     localStorage.setItem('dym_token', data.token);
     localStorage.setItem('dym_sesion', JSON.stringify(data));
     setSesion(data);
@@ -51,7 +50,7 @@ export function AuthProvider({ children }) {
     estaAutenticado: !!sesion,
     esCliente: sesion?.tipoCuenta === 'CLIENTE',
     esUsuarioInterno: sesion?.tipoCuenta === 'USUARIO',
-    rol: sesion?.rol || null, // 'Administrador' | 'Vendedor' | 'Almacenero' | null
+    rol: sesion?.rol || null,
     ingresarComoCliente,
     ingresarComoUsuario,
     cerrarSesion,

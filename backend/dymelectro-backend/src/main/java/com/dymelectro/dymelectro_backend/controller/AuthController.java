@@ -21,19 +21,16 @@ public class AuthController {
         this.authService = authService;
     }
 
-    /** Login para usuarios internos (admin/vendedor/almacenero) del panel administrativo. */
     @PostMapping("/login/usuario")
     public ResponseEntity<LoginResponse> loginUsuario(@Valid @RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.loginUsuario(request));
     }
 
-    /** Login para clientes de la tienda. */
     @PostMapping("/login/cliente")
     public ResponseEntity<LoginResponse> loginCliente(@Valid @RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.loginCliente(request));
     }
 
-    /** Registro publico de clientes (crea tambien su carrito, via trigger). */
     @PostMapping("/registro/cliente")
     public ResponseEntity<Map<String, Integer>> registroCliente(@Valid @RequestBody RegistroClienteRequest request) {
         Integer idCliente = authService.registrarCliente(request);

@@ -20,7 +20,6 @@ public class JdbcProcedureSupport {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    /** Llama un procedimiento que devuelve un unico result set (0..N filas). */
     public <T> List<T> queryForList(String callSql, RowMapper<T> mapper, Object... params) {
         return jdbcTemplate.query(con -> {
             CallableStatement cs = con.prepareCall(callSql);
@@ -29,13 +28,11 @@ public class JdbcProcedureSupport {
         }, mapper);
     }
 
-    /** Llama un procedimiento que devuelve un unico result set con a lo sumo una fila. */
     public <T> Optional<T> queryForOptional(String callSql, RowMapper<T> mapper, Object... params) {
         List<T> result = queryForList(callSql, mapper, params);
         return result.isEmpty() ? Optional.empty() : Optional.of(result.get(0));
     }
 
-    /** Llama un procedimiento sin result set (solo INSERT/UPDATE/DELETE). */
     public void execute(String callSql, Object... params) {
         jdbcTemplate.update(con -> {
             CallableStatement cs = con.prepareCall(callSql);
@@ -45,7 +42,7 @@ public class JdbcProcedureSupport {
     }
 
     /**
-     * Llama un procedimiento que devuelve dos result sets (ej. cabecera + detalle),
+     * Llama un procedimiento que devuelve dos result sets (cabecera + detalle, por ejemplo),
      * como sp_obtener_producto_detalle, sp_obtener_comprobante o sp_obtener_detalle_compra.
      */
     public <A, B> TwoResultSets<A, B> queryTwoResultSets(String callSql, RowMapper<A> mapperA, RowMapper<B> mapperB, Object... params) {

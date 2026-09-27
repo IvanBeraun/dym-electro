@@ -38,7 +38,7 @@ export default function Compras() {
     listarProveedores()
       .then(setProveedores)
       .catch(() => {
-        // si falla la carga de proveedores, se deja el select vacio sin romper la pagina
+        // si llega a fallar la carga de proveedores, se deja el select vacío sin romper la página
       });
   }, []);
 

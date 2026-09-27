@@ -19,7 +19,6 @@ public class MarcaController {
         this.marcaService = marcaService;
     }
 
-    /** Lectura publica: tambien se usa para poblar filtros del catalogo publico. */
     @GetMapping
     public ResponseEntity<List<MarcaDTO>> listar() {
         return ResponseEntity.ok(marcaService.listar());

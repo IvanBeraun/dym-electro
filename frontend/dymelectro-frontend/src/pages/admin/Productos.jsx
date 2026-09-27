@@ -55,7 +55,6 @@ export default function Productos() {
 
   const [ajusteStock, setAjusteStock] = useState({ idProducto: '', stock: '' });
 
-  // ---- Seccion de imagenes (igual que antes) ----
   const [idImagenBuscar, setIdImagenBuscar] = useState('');
   const [productoImagenes, setProductoImagenes] = useState(null);
   const [formImagen, setFormImagen] = useState({ urlImagen: '', esPrincipal: false, orden: 0 });

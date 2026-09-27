@@ -46,11 +46,6 @@ export default function Catalogo() {
     }
   }
 
-  // El backend no expone un listado de categorias/marcas con su ID (solo
-  // /catalogo/filtrar por idCategoria/idMarca), asi que estas opciones se
-  // derivan de los propios productos cargados y el filtro se aplica en el
-  // cliente. Si se agrega GET /api/categorias y /api/marcas, esto se puede
-  // reemplazar por catalogoService.filtrar() con los IDs reales.
   const categorias = useMemo(
     () => [...new Set(productos.map((p) => p.categoria).filter(Boolean))].sort(),
     [productos]

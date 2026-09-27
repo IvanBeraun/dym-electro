@@ -28,14 +28,12 @@ public class VentaController {
         this.ventaService = ventaService;
     }
 
-    /** Listado general restringido al personal interno (Admin/Vendedor). */
     @GetMapping
     @PreAuthorize("hasRole('USUARIO')")
     public ResponseEntity<List<ComprobanteCabeceraDTO>> listar() {
         return ResponseEntity.ok(ventaService.listarTodas());
     }
 
-    /** El cliente autenticado genera una venta a partir de su carrito actual. */
     @PostMapping
     @PreAuthorize("hasRole('CLIENTE')")
     public ResponseEntity<VentaGeneradaResponse> generar(@AuthenticationPrincipal AuthPrincipal p,
@@ -45,7 +43,7 @@ public class VentaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(resp);
     }
 
-    /** El cliente cancela su propia venta mientras siga Pendiente de pago (ej. se arrepiente antes de pagar). */
+    /** El cliente cancela su propia venta mientras siga pendiente de pago */
     @PatchMapping("/{idVenta}/cancelar")
     @PreAuthorize("hasRole('CLIENTE')")
     public ResponseEntity<Void> cancelar(@PathVariable Integer idVenta, @AuthenticationPrincipal AuthPrincipal p) {
@@ -60,7 +58,7 @@ public class VentaController {
         return ResponseEntity.ok(ventaService.obtenerComprobante(idVenta, p));
     }
 
-    /** Descarga el mismo comprobante como PDF. Misma regla de dueño que el endpoint de arriba. */
+    /** Descarga el mismo comprobante como PDF. Misma regla de dueño como el endpoint de arriba */
     @GetMapping("/{idVenta}/pdf")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<byte[]> descargarPdf(@PathVariable Integer idVenta,
@@ -79,7 +77,6 @@ public class VentaController {
         return ResponseEntity.ok(ventaService.historialCliente(p.id()));
     }
 
-    /** Anulacion restringida al personal interno (Admin/Vendedor). */
     @PatchMapping("/{idVenta}/anular")
     @PreAuthorize("hasRole('USUARIO')")
     public ResponseEntity<Void> anular(@PathVariable Integer idVenta) {
