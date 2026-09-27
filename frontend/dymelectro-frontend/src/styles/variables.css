@@ -1,0 +1,51 @@
+:root {
+  /* ---- Paleta D&M Electro ----
+     Inspirada en cinta de seguridad eléctrica: negro carbón + amarillo señal,
+     con azul institucional como color de marca/confianza. */
+  --negro: #15181c;
+  --negro-suave: #22262b;
+  --azul-900: #0b2a52;
+  --azul-700: #144a8c;
+  --azul-500: #1f6fd6;
+  --amarillo: #f5b400;
+  --amarillo-oscuro: #cf9700;
+  --blanco: #ffffff;
+  --gris-50: #f6f7f8;
+  --gris-100: #eceef0;
+  --gris-300: #c7cdd3;
+  --gris-500: #7c848c;
+  --gris-700: #454b52;
+
+  --color-bg: var(--gris-50);
+  --color-superficie: var(--blanco);
+  --color-texto: var(--negro);
+  --color-texto-muted: var(--gris-500);
+  --color-borde: var(--gris-100);
+  --color-primario: var(--azul-700);
+  --color-primario-hover: var(--azul-900);
+  --color-acento: var(--amarillo);
+  --color-acento-hover: var(--amarillo-oscuro);
+  --color-peligro: #c62828;
+  --color-exito: #1b7a3d;
+
+  --fuente-display: 'Space Grotesk', system-ui, sans-serif;
+  --fuente-texto: 'Inter', system-ui, sans-serif;
+  --fuente-mono: 'JetBrains Mono', monospace;
+
+  --radio: 6px;
+  --sombra: 0 1px 2px rgba(21, 24, 28, 0.06), 0 4px 12px rgba(21, 24, 28, 0.04);
+  --franja: repeating-linear-gradient(
+    135deg,
+    var(--negro),
+    var(--negro) 10px,
+    var(--amarillo) 10px,
+    var(--amarillo) 20px
+  );
+}
+
+[data-tema='admin'] {
+  --color-bg: var(--gris-50);
+  --sidebar-bg: var(--negro);
+  --sidebar-texto: var(--gris-300);
+  --sidebar-texto-activo: var(--blanco);
+}

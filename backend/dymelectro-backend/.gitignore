@@ -1,0 +1,6 @@
+target/
+.idea/
+*.iml
+
+# Configuracion local con credenciales reales -- NUNCA se sube
+src/main/resources/application.properties

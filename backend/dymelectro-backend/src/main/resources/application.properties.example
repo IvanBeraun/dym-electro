@@ -1,0 +1,21 @@
+spring.application.name=dymelectro-backend
+
+# ==== base de datos ====
+spring.datasource.url=jdbc:mysql://localhost:3306/bd_dym_electro?useSSL=false&serverTimezone=America/Lima
+spring.datasource.username=root
+spring.datasource.password=password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=false
+spring.jpa.open-in-view=false
+
+# ==== jwt ====
+app.jwt.secret=jwt_aqui
+app.jwt.expiration-ms=86400000
+
+server.port=8080
+
+# ==== stripe ====
+stripe.secret-key=${STRIPE_SECRET_KEY:sk_test_secret_key}
+stripe.currency=pen

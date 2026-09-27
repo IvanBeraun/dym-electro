@@ -1,0 +1,106 @@
+.admin-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  background: var(--color-bg);
+}
+@media (max-width: 860px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-texto);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+.admin-sidebar__marca {
+  padding: 22px 20px 18px;
+  font-family: var(--fuente-display);
+  font-weight: 700;
+  color: var(--blanco);
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--negro-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.admin-sidebar__marca-dym { color: var(--amarillo); }
+.admin-sidebar__logo-img {
+  height: 90px;
+  width: 190px;
+  display: block;
+}
+.admin-sidebar__panel {
+  font-family: var(--fuente-texto);
+  font-weight: 500;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris-500);
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 10px;
+  gap: 2px;
+  flex: 1;
+}
+.admin-sidebar__nav a {
+  color: var(--sidebar-texto);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+}
+.admin-sidebar__nav a:hover {
+  background: var(--negro-suave);
+  color: var(--blanco);
+}
+.admin-sidebar__nav a.active {
+  background: var(--negro-suave);
+  color: var(--sidebar-texto-activo);
+  border-left-color: var(--amarillo);
+}
+
+.admin-sidebar__usuario {
+  padding: 16px 20px 22px;
+  border-top: 1px solid var(--negro-suave);
+}
+.admin-sidebar__usuario-nombre {
+  color: var(--blanco);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.admin-main {
+  padding: 32px 36px 64px;
+  max-width: 1100px;
+  width: 100%;
+}
+.admin-main h1 { font-size: 1.5rem; }
+.admin-main__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.admin-sidebar .btn-fantasma {
+  color: var(--sidebar-texto);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.admin-sidebar .btn-fantasma:hover:not(:disabled) {
+  border-color: var(--sidebar-texto);
+}
